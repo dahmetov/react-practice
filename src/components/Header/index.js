@@ -1,10 +1,11 @@
 import style from './index.module.css'
 import {routes} from "../../config/routes";
 import {Link, useRouteMatch} from "react-router-dom";
+import {useLocation} from "react-router";
 
 const Header = (props) => {
-    const router = useRouteMatch()
-    console.log(router)
+    const location = useLocation()
+    console.log(location)
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -19,7 +20,7 @@ const Header = (props) => {
                         {
                             routes.map((route) => {
                                 return (
-                                    <li key={route.path} className={`nav-item ${router.url === route.path ? style.active : ''}`}>
+                                    <li key={route.path} className={`nav-item ${location.pathname === route.path ? style.active : ''}`}>
                                         <Link className="nav-link" aria-current="page" to={route.path}>{route.title}</Link>
                                     </li>
                                 )
