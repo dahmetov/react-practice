@@ -5,7 +5,7 @@ import {useLocation} from "react-router";
 
 const Header = (props) => {
     const location = useLocation()
-    console.log(location)
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">

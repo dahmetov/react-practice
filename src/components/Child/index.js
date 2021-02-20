@@ -1,24 +1,23 @@
 import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import {useRouteMatch} from "react-router-dom";
+import LazyComponent from "../Lazy";
 
 const Child = (props) => {
-    let { path, url } = useRouteMatch();
-    console.log(url)
-    console.log(path)
+    let {url} = useRouteMatch();
     return (
         <>
             <Link to={`${url}/one`}>One</Link><br/>
             <Link to={`${url}/two`}>Two</Link><br/>
-            <Link to={'three'}>Three</Link>
-            <Router>
-                <Route path={`${url}/one`} render={() => {
-                    return (<One />)
-                }} />
-                <Route path={`${url}/two`} render={() => {
-                    return (<Two />)
-                }} />
-                <Route path={`${url}/three`} component={Three} />
-            </Router>
+            <Link to={'three'}>Three</Link><br/>
+            <Link to={`${url}/lazy`}>Lazy Component</Link>
+            <Route path={`${url}/one`} render={() => {
+                return (<One/>)
+            }}/>
+            <Route path={`${url}/two`} render={() => {
+                return (<Two/>)
+            }}/>
+            <Route path={`${url}/three`} component={Three}/>
+            <Route path={`${url}/lazy`} component={LazyComponent}/>
         </>
     )
 }
